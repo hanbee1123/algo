@@ -102,6 +102,8 @@ if __name__ == "__main__":
     LL.put_at(1,300)
     LL.put_at(2,3000)
     LL.put_at(3,2000)
+    LL.put_at(1,'bee')
+
 
     LL.print_values()
     
