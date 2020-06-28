@@ -101,7 +101,7 @@ if __name__ == "__main__":
     LL.pop()
     LL.put_at(1,300)
     LL.put_at(2,3000)
-    LL.put_at(3,3200)
+    LL.put_at(3,2000)
 
     LL.print_values()
     
