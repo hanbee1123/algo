@@ -93,6 +93,40 @@ class LL:
             #finally increment node_count by one
             self.node_count +=1
 
+    def pop_head(self):
+        # If node count is 0 then return value error
+        if self.node_count == 0: 
+            raise ValueError("The list is empty, there's no head to pop")
+        # If node count is 1 then make list empty
+        elif self.node_count == 1:
+            self.head = None
+            self.tail = None
+            self.node_count -= 1
+        # Else, delete head and shift it
+        else:
+            self.head = self.head.next
+            self.node_count -=1
+   
+    def delete_value(self, data):
+        ptr = self.head
+        # if value is head pop head
+        if ptr == self.head and ptr.data == data:
+            self.pop_head()
+            ptr = ptr.next
+
+        #if value is tail pop
+        elif ptr == self.tail and ptr.data == data:
+            self.pop()
+        
+        # if value is between head and tail
+        elif ptr.data == data:
+            
+            
+
+
+
+
+
 if __name__ == "__main__":
     LL = LL()
     LL.append(10)
@@ -103,12 +137,14 @@ if __name__ == "__main__":
     LL.put_at(2,3000)
     LL.put_at(3,2000)
     LL.put_at(1,'bee')
+    LL.pop_head()
+    LL.pop_head()
 
 
     LL.print_values()
-    
+
     
     
     # i_nums = iter(LL)
     # print(next(i_nums))
-    # print(next(i_nums))
+    # print(next(i_nums))    
