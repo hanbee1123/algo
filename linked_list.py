@@ -107,20 +107,49 @@ class LL:
             self.head = self.head.next
             self.node_count -=1
    
-    def delete_value(self, data):
+    def get_to(self,num):
         ptr = self.head
-        # if value is head pop head
-        if ptr == self.head and ptr.data == data:
-            self.pop_head()
-            ptr = ptr.next
+        if num == 0:
+            raise ValueError("Can't put 0, the that doesn't return anything dumb dumb!")
+        elif num > self.node_count:
+            raise ValueError(f"The value you put is longer than the node. The max lenght is {self.node_count}")
+        else:
+            counter = 1
+            while counter < num:
+                ptr = ptr.next
+                counter += 1
+            return ptr.data
 
-        #if value is tail pop
-        elif ptr == self.tail and ptr.data == data:
-            self.pop()
+    def delete_values(self, data):
+        ptr = self.head
+        prev = Node('dummy')
+        prev.next = ptr
+        while ptr != None:
+        # if value is at head pop_head
+            if ptr == self.head and ptr.data == data:
+                self.pop_head()
+                prev.next = ptr.next
+                ptr = self.head
+
+        #if value is at tail pop_tail
+            elif ptr == self.tail and ptr.data == data:
+                self.pop()
         
         # if value is between head and tail
-        elif ptr.data == data:
-            
+            elif ptr != None and ptr.data == data:
+                prev.next = ptr.next
+                prev = prev.next
+                ptr = ptr.next
+                self.node_count -= 1
+        
+            elif ptr != None:
+                ptr = ptr.next
+                prev = prev.next
+
+
+        
+
+
             
 
 
@@ -129,16 +158,15 @@ class LL:
 
 if __name__ == "__main__":
     LL = LL()
-    LL.append(10)
+    LL.append(2000)
+    LL.append(2000)
     LL.append(20)
+    LL.append(2000)
     LL.append(30)
-    LL.pop()
-    LL.put_at(1,300)
-    LL.put_at(2,3000)
-    LL.put_at(3,2000)
-    LL.put_at(1,'bee')
-    LL.pop_head()
-    LL.pop_head()
+    LL.append(2000)
+    LL.append(2000)
+    LL.append(2000)
+    LL.delete_values(2000)
 
 
     LL.print_values()
