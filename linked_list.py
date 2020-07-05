@@ -128,25 +128,24 @@ class LL:
         # if value is at head pop_head
             if ptr == self.head and ptr.data == data:
                 self.pop_head()
-                prev.next = ptr.next
                 ptr = self.head
+                prev.next = ptr
 
         #if value is at tail pop_tail
             elif ptr == self.tail and ptr.data == data:
-                self.pop()
+                 self.pop()
+                 ptr = self.tail
         
         # if value is between head and tail
-            elif ptr != None and ptr.data == data:
+            elif ptr.data == data:
                 prev.next = ptr.next
-                prev = prev.next
-                ptr = ptr.next
+                ptr = prev.next
                 self.node_count -= 1
         
-            elif ptr != None:
+            else:
                 ptr = ptr.next
                 prev = prev.next
-
-
+        
         
 
 
@@ -165,8 +164,16 @@ if __name__ == "__main__":
     LL.append(30)
     LL.append(2000)
     LL.append(2000)
+    LL.append('bee')
     LL.append(2000)
+    LL.append(20)
+    LL.append(20)
+    
+    LL.append(2000)
+    LL.append(2000)
+
     LL.delete_values(2000)
+    LL.delete_values(20)
 
 
     LL.print_values()
