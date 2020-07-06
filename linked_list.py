@@ -145,15 +145,6 @@ class LL:
             else:
                 ptr = ptr.next
                 prev = prev.next
-        
-        
-
-
-            
-
-
-
-
 
 if __name__ == "__main__":
     LL = LL()
