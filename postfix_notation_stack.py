@@ -63,22 +63,10 @@ def change_to_postfix(expression):
         # If the character is an operator, 
         elif char in operator:
             # If the postfix is not empty compare the value of the operators
-            if not postfix.is_empty():
-                # if the character has a higher value than the peek of stack OR is '(', push it to the peek of stack
-                if operator[char] > operator[postfix.peek()] or char == '(':
-                    postfix.push(char)
-                # if the character has a lower value thann the peek of stack and is NOT '(' keep appending the peek
-                elif operator[char]<=operator[postfix.peek()] and char != '(':
-                    while operator[char]<= operator[postfix.peek()]:
-                        answer += postfix.peek()
-                        postfix.pop()
-                        if postfix.is_empty():
-                            postfix.push(char)
-                            break
-                # if the stack is empty, push the operator to the stack.
-            else:
-                postfix.push(char)
-        # If the character is NOT an operator and NOT an alphabet, raise value error
+            while not postfix.is_empty() and operator[char]<=operator[postfix.peek()]:
+                answer += postfix.peek()
+                postfix.pop()
+            postfix.push(char)
         else: 
             raise ValueError('There is an inappropriate character in the expression')
     # When the loop is over but the stack is not empty, push every value in the stack to the answer
@@ -90,3 +78,5 @@ def change_to_postfix(expression):
 if __name__ == "__main__":
     expression = 'A+B*C-D'
     print(change_to_postfix(expression))
+
+
