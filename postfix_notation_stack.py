@@ -24,59 +24,69 @@ class ArrayStack:
         return len(self.data)
     def is_empty(self):
         return self.size() == 0
-    
-def change_to_postfix(expression):
-    '''This function changes an infix notation to a postfix notation
-    
-    param expression: A infix notation which will be transformed to a postfix notation
-    return: A postfix notation of the expression
 
-    >>> change_to_postfix('(A+B)*(B+C)') 
-    'AB+ BC+ *'
-    '''
-    postfix = ArrayStack()
-    answer = ""
-    # First set the priority of operators 
-    operator = {
-        '*':3
-        ,'/':3
-        ,'+':2
-        ,'-':2
-        ,'(':1
-    }
+class PostFix:
+    def change_to_postfix(self, expression):
+        '''This function changes an infix notation to a postfix notation
+        
+        param expression: A infix notation which will be transformed to a postfix notation
+        return: A postfix notation of the expression
 
-    # Loop through the infix notation expression
-    for char in expression:
-        # If the character is an alphabet append it to the answer
-        if char.isalpha():
-            answer += char
-        # If the character is an opening bracket, push it to stack
-        elif char == '(':
-            postfix.push(char)
-        # If the character is a closing bracket, pop everthing until '(' and append it to the answer
-        elif char == ')':
-            while postfix.peek() != '(':
-                answer += postfix.peek()
-                postfix.pop()
-            if postfix.peek() == '(':
-                postfix.pop()
-        # If the character is an operator, 
-        elif char in operator:
-            # If the postfix is not empty compare the value of the operators
-            while not postfix.is_empty() and operator[char]<=operator[postfix.peek()]:
-                answer += postfix.peek()
-                postfix.pop()
-            postfix.push(char)
-        else: 
-            raise ValueError('There is an inappropriate character in the expression')
-    # When the loop is over but the stack is not empty, push every value in the stack to the answer
-    while not postfix.is_empty() and postfix.peek() != '(':
-        answer += postfix.peek()
-        postfix.pop()
-    return answer
+        >>> change_to_postfix('(A+B)*(B+C)') 
+        'AB+ BC+ *'
+        '''
+        postfix = ArrayStack()
+        answer = ""
+        # First set the priority of operators 
+        operator = {
+            '*':3
+            ,'/':3
+            ,'+':2
+            ,'-':2
+            ,'(':1
+        }
+
+        # Loop through the infix notation expression
+        for char in expression:
+            # If the character is an alphabet append it to the answer
+            if char.isalpha() or char.isdigit():
+                answer += char
+            # If the character is an opening bracket, push it to stack
+            elif char == '(':
+                postfix.push(char)
+            # If the character is a closing bracket, pop everthing until '(' and append it to the answer
+            elif char == ')':
+                while postfix.peek() != '(':
+                    answer += postfix.peek()
+                    postfix.pop()
+                if postfix.peek() == '(':
+                    postfix.pop()
+            # If the character is an operator, 
+            elif char in operator:
+                # If the postfix is not empty compare the value of the operators
+                while not postfix.is_empty() and operator[char]<=operator[postfix.peek()]:
+                    answer += postfix.peek()
+                    postfix.pop()
+                postfix.push(char)
+            else: 
+                raise ValueError('There is an inappropriate character in the expression')
+        # When the loop is over but the stack is not empty, push every value in the stack to the answer
+        while not postfix.is_empty() and postfix.peek() != '(':
+            answer += postfix.peek()
+            postfix.pop()
+        return answer
+
+    def calculate_postfix(self, expression):
+        # This function calculates the value of the postfix notation
+        postfix_notation = self.change_to_postfix(expression)
+        
+
+    
 
 if __name__ == "__main__":
     expression = 'A+B*C-D'
-    print(change_to_postfix(expression))
+    postfix = PostFix()
+    print(postfix.change_to_postfix(expression))
+    print(postfix.calculate_postfix(expression))
 
 
