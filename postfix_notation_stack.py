@@ -110,8 +110,6 @@ class PostFix:
         return answer
 
 
-
-
     def calculate_postfix(self, expression):
         '''This function calculates the value of the postfix notation
         
@@ -136,10 +134,6 @@ class PostFix:
             else:
                 raise ValueError('Your expression consists of a value that is not an operator or a number')
         return stack.peek()
-
-
-
-
     
 
 if __name__ == "__main__":
