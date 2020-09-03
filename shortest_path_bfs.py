@@ -71,7 +71,7 @@ class solution:
                         if put[-1] == "L" and put[-2] != "R" or put[-1] == "R" and put[-2] != "L" or put[-1] == "U" and put[-2] != "D" or put[-1] == "D" and put[-2] != "U":
                             queue.append(put)
                 
-        return put[:len(put)-2]
+        return first_out[:len(first_out)-1]
 
     
     def print_shortest_path(self, cube):
