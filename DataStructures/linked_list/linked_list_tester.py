@@ -68,10 +68,10 @@ class LL():
             raise AttributeError(f"The requested index is longer than the total length of the node which is {self.nodelength()}")
             
         else:
-
-            #2. When input is done in the head, we must set the new node and the head.
+            #2. When there is no node, set new node as head
             if self.head == None and idx == 0:
                 self.head = newnode
+            #2. When there is a node and index is 0, push all aside and set new node as head.
             elif self.head != None and idx == 0:
                 newnode.next = self.head
                 self.head = newnode
@@ -83,8 +83,8 @@ class LL():
                     current = current.next
                 current.next = newnode
                 return
-        
-        #4. When the input is made between 2 nodes
+            
+            #4. When input is made between nodes
             else:
                 current = self.head
                 for _ in range(idx-1):
