@@ -69,33 +69,31 @@ class LL():
             
         else:
 
-        #2. When input is done in the head, we must set the new node and the head.
-        if self.head == None and idx == 0:
-            self.head = newnode
-            return
-        elif self.head != None and idx == 0:
-            newnode.next = self.head
-            self.head = newnode
-            return
+            #2. When input is done in the head, we must set the new node and the head.
+            if self.head == None and idx == 0:
+                self.head = newnode
+            elif self.head != None and idx == 0:
+                newnode.next = self.head
+                self.head = newnode
 
-        #3. When input is made in tail
-        if self.nodelength() == idx:
-            current = self.head
-            while current.next != None:
-                current = current.next
-            current.next = newnode
-            return
+            #3. When input is made in tail
+            elif self.nodelength() == idx:
+                current = self.head
+                while current.next != None:
+                    current = current.next
+                current.next = newnode
+                return
         
         #4. When the input is made between 2 nodes
-
-        current = self.head
-        for _ in range(idx-1):
-            if current.next == None:
-                current.next = newnode
             else:
-                current = current.next
-        newnode.next = current.next
-        current.next = newnode
+                current = self.head
+                for _ in range(idx-1):
+                    if current.next == None:
+                        current.next = newnode
+                    else:
+                        current = current.next
+                newnode.next = current.next
+                current.next = newnode
 
 if __name__ == "__main__":
     linked_list = LL()
