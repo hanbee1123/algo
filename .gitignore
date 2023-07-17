@@ -1,0 +1,5 @@
+## IGNORE some directories ##
+/__pycache__
+  
+## IGNORE text_files ##
+*.txt
