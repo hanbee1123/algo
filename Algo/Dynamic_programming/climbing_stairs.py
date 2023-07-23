@@ -32,25 +32,18 @@ def dp_topdown(n):
 DP using bottomup
 """
 
-memo = {}
 def dp_topdown(n):
-    if n == 1:
-        return 1
-    if n == 2:
-        return 2
-    
-    if n not in memo:
-        memo[n] = dp_topdown(n-1) + dp_topdown(n-2)
-    if n in memo:
+    memo = {1:1, 2:2}
+    def dp(n):
+        if n not in memo:
+            memo[n] = dp(n-1)+dp(n-2)
         return memo[n]
+    dp(n)
+    return memo[n]
     
-    return dp_topdown(n-1) + dp_topdown(n-2)
 
 def dp_bottomup(n):
-    if n == 1:
-        return 1
-    if n == 2:
-        return 2
+    memo = {1:1, 2:2}
     for i in range(3,n+1):
         memo[i] = memo[i-1] + memo[i-2]
     return memo[n]
