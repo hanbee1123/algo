@@ -49,7 +49,7 @@ heapq.heappush(min_heap,7)
 print(min_heap)
 
 
-#heapify max를 정해주는 방법은 의외로 재밌다.
+#### heapify max를 정해주는 방법은 의외로 재밌다.
 # list의 모든값에 -를 추가해준다음에 heapify해주면된다.
 max_heap = [i * -1 for i in min_heap]
 print(max_heap)

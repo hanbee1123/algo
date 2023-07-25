@@ -28,10 +28,10 @@ def dp_dfs(cost:list):
     def dfs(n):
         if n == 0 or n==1:
             return memo[n]
-        if n in memo:
-            return memo[n]
-        else:
-            return cost[n] + min(dfs(n-1), dfs(n-2))
+        if n not in memo:
+            memo[n] = cost[n]+min(dfs(n-1), dfs(n-2))
+        return memo[n]
+
 
     return min(dfs(len(cost)-1),dfs(len(cost)-2))        
 

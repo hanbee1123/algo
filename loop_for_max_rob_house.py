@@ -15,3 +15,4 @@ def rob(nums):
 
 if __name__ == "__main__":
     print(rob([100,1,1,1,2,100]))
+

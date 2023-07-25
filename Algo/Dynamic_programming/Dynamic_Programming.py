@@ -26,6 +26,9 @@ def fibo(n):
         
 DP에는 2가지 접근 방법이 있음:
 - topdown or bottom up        
+
+- topdown 의 경우 재귀를 사용
+- bottomup의 경우 for loop을 사용
         
         
 피보나치 topdown:
@@ -38,18 +41,11 @@ def fibo(n):
         return memo[n]
 
 피보나치 bottomup:
-
-memo ={}
+memo ={1:1, 2:1}
 def fibo(n):
-        if n == 1 or n == 2:
-            return 1
-        if i in range(3,n+1):
+        for i in range(3,n+1):
             memo[i] = memo[i-1] + memo[i-2]
         return memo[n]
         
-        
-        
-        
-        
-        
+     
 """
