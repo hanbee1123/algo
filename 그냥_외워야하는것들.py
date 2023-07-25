@@ -67,7 +67,25 @@ def dfs(graph, start_point, visited=[]):
     return visited
 
 
+# dp topdown
+#dp bottom up
 
+def topdown(n):
+    memo = {}
+    def dp(n):
+        if n==0 or n==1: return 1
+        if n not in memo:
+            memo[n] = dp(n-1)+dp(n-2)
+        return memo[n]
+    dp(10)
+    return memo[n]
+
+def bottomup(n):
+    memo ={1:1,2:1}
+    for v in range(3,n):
+        memo[v] = memo[v-1] + memo[v-2]
+    
+    return memo[n]
 
 
 if __name__ == "__main__":
