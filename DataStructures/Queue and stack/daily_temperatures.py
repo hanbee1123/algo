@@ -41,7 +41,7 @@ return ans
         
 """
 
-def dailyTemperatures(temperatures: List[int]):
+def dailyTemperatures(temperatures):
     if len(temperatures) == 0  or len(temperatures) == 1:
         return [0]
     

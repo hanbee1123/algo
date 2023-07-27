@@ -13,7 +13,7 @@ def djikstra(graph,start,final,n):
                 next_cost = cur_cost + cost
                 heapq.heappush(pq,(next_cost,next_v))
     
-    if len(costs) == N:
+    if len(costs) == start:
         return costs[final]
     else:
         return -1

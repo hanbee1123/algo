@@ -1,18 +1,17 @@
-def solution(numbers, target):
-    def helper(numbers, target, index, path):
-        if index == len(numbers):
-            if path == target:
-                return 1
-            return 0
-        
+from collections import Counter
 
-        counter = 0
-        counter += helper(numbers, target, index+1, path+numbers[index])
-        counter += helper(numbers, target, index+1, path-numbers[index])
-        
-        return counter
+def longestPalindrome(s):
+    new_s = Counter(s)
+    counter = 0 
+    odd_counter = 0
+    for i in new_s:
+        if new_s[i] %2 ==0:
+            counter += new_s[i]
+        else:
+            odd_counter = max(odd_counter , new_s[i])
     
-    return helper(numbers, target, 0,0)
-
+    return counter + odd_counter
+    
 if __name__ == "__main__":
-    print(solution([1,1,1,1,1], 3))
+    s = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"
+    print(longestPalindrome(s))
