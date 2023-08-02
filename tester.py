@@ -4,6 +4,8 @@ def isValid(s):
         if i == "(" or i=="[" or i== "{":
             stack.append(i)
         else:
+            if len(stack) == 0:
+                return False
             if i == ')' and stack[-1] == '(':
                 stack.pop()
             elif i == ']' and stack[-1] == '[':
