@@ -36,6 +36,9 @@ min_heap = [5,3,9,4,1,2,6]
 heapq.heapify(min_heap)
 print(min_heap)
 
+heapq.heappushpop(min_heap, 10)
+print(min_heap)
+
 #pop lowest value and reorder.
 #heappop = O(log n)
 #reorder process: move tail to head of tree and shift down until necessary.
@@ -66,3 +69,6 @@ print(max_heap)
 val = 10
 heapq.heappush(max_heap,val * -1)
 print(max_heap)
+
+
+
