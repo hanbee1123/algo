@@ -50,20 +50,30 @@ class Solution:
                     dp[i]=min(dp[i], dp[i-coin]+1)
         
         return -1 if dp[-1]==amount+1 else dp[-1]
-    
-def cc(coins,amount):
-    dp = [amount+1]*(amount+1)
-    dp[0] = 0
+class Solution2:  
+    def cc(self,coins,amount):
+        self.min_depth = amount+1
+        self.seen = set()
 
-    for a in range(1,amount+1):
-        for c in coins:
-            if a-c>=0:
-                dp[a] = min(dp[a], 1+ dp[a-c])
-    if dp[amount] != amount+1:
-        print(dp)
-        return dp[amount]
+        def dfs(depth, amount, coins):
+            if amount == 0:
+                self.min_depth = min(self.min_depth, depth)
+                print(self.min_depth)
+                return
+            for c in coins:
+                new_val = amount - c
+                if new_val >=0:
+                    self.seen.add(new_val)
+                    dfs(depth+1, new_val, coins)
+        dfs(0,amount,coins)
+        if self.min_depth == amount+1:
+            return -1
+        else:
+            return self.min_depth
+
 
 if __name__=="__main__":
-    amount=11
+    amount=100
     coins = [1,2,5]
-    print(cc(coins,amount))
+    atest = Solution2()
+    print(atest.cc(coins,amount))
