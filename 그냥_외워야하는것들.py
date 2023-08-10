@@ -86,4 +86,4 @@ if __name__ == "__main__":
         'E':['A']
     }
 
-    print(dfs(graph,'A'))
+    print(dfs_graph(graph,'A'))
