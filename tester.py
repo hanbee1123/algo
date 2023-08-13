@@ -1,29 +1,37 @@
-class Solution:
-    def combinationSum(self, candidates,target):
-        #dfs(depth first search (깊이 우선 탐색))
-        self.return_val = []
-        self.candidates = candidates
-        lister = []
-        def dfs(target,lister):
-            if target == 0:
-                self.return_val.append(lister.copy())
+def intervals(intervals):
+    return_val = []
+    start = None
+    end = None
+    for i in range(len(intervals)-1):
 
-            elif target < 0:
-                return
+        if intervals[i][1] >= intervals[i+1][0]:
+            if start == None:
+                start = intervals[i][0]
             else:
-                for c in self.candidates:
-                    lister.append(c)
-                    if sorted(lister) not in self.return_val:
-                        dfs(target-c, sorted(lister))
-                    lister.pop()
-            return
+                start = min(start,intervals[i][0])
+            continue
 
+        elif  intervals[i][1] >= intervals[i+1][1]:
+            if start == None:
+                start = intervals[i][0]
+            else:
+                start = min(start,intervals[i][0])
 
-        dfs(target,lister)
-        return self.return_val
+            if end == None:
+                end = intervals[i][1]
+            else:
+                end = max(end,intervals[i+1][0])
+            continue
+
+        elif intervals[i][1] < intervals[i+1][0]:
+            end = intervals[i][1]
+        else:
+            return_val.append(intervals[i])
+
+        return_val.append([start,end])
+        start = None
+        end = None
 
 if __name__ == "__main__":
-    candidates = [2,3,6,7]
-    target = 7
-    a = Solution()
-    print(a.combinationSum(candidates,target))
+    intervalss = [[1,3],[2,6],[8,10],[15,18]]
+    print(intervals(intervalss))
