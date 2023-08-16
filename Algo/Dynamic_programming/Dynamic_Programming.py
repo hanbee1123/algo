@@ -1,4 +1,7 @@
 """
+Watch the following video for dynamic programming. Best material.
+https://www.youtube.com/watch?v=oBt53YbR9Kk
+
 DP 해결방법:
 1. 크고 복잡한 문제를 하위 문제로 나눈다.
 예) def fibo(n):
