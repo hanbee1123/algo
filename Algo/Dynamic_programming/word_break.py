@@ -1,16 +1,24 @@
 class Solution:
     def wordBreak(self, s, wordDict):
-        dp = [False] * (len(s)+1)
-        dp[len(s)] = True
+        self.length = len(s)
 
-        for i in range(len(s)-1,-1,-1):
-            for w in wordDict:
-                if (i+len(w))<=len(s) and s[i:i + len(w)] == w:#check if we have enough characters left to compare
-                    dp[i]=dp[i+len(w)]
-                if dp[i]:
-                    break
+        memo = {}
+        def dfs(s,worddict,idx):
+            if idx in memo:
+                return memo[idx]
 
-        return dp[0]
+
+            if idx == self.length:
+                memo[idx] = True
+                return True
+            
+            for w in worddict:
+                if s[:len(w)] == w:
+                    if dfs(s[len(w):], worddict, idx+len(w)) == True:
+                        return True
+            memo[idx] = False
+            
+        return dfs(s, wordDict,0)
 if __name__ == "__main__":
     s = "cars"
     wordDict = ["car","ca","rs"]
