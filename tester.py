@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Solution:
     def longestPalindrome(self, s):
         self.s = s
@@ -20,3 +21,9 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     s.longestPalindrome("babad")
+=======
+a= set(1,2)
+b = set(2,1)
+
+print(a==b)
+>>>>>>> e4097c23ae7d4441ff154ce5eb96b3813e3fa38c
