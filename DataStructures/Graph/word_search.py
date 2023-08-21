@@ -18,38 +18,39 @@ class Solution:
         """
         self.grids = [[-1,0],[1,0],[0,-1],[0,1]]
         print(word)
-        self.board2 = board.copy()
-        for m in self.board2:
-            print(m)
-        def dfs(word,i,j,board,previous):
-            previous.append([i,j])
+        def dfs(word,i,j,board):
             print("")
-            self.board2[i][j] = '-'
-            for k in self.board2:
-                print(k)
+            for k in board:
+                print(k)    
+
             if len(word) == 1:
+                print("")
+                board[i][j] = '-'
+                for k in board:
+                    print(k)    
                 return True
-            
+          
+
             for x,y in self.grids:
                 new_x = i+x
                 new_y = j+y
-                if 0<=new_x<len(board) and 0<=new_y<len(board[0]) and board[new_x][new_y] == word[1] and [new_x,new_y] not in previous:
-                    if dfs(word[1:],new_x,new_y,board, previous):
+                if 0<=new_x<len(board) and 0<=new_y<len(board[0]) and board[new_x][new_y] == word[1]:
+                    board[i][j] = '-'
+                    if dfs(word[1:],new_x,new_y,board):
                         return True
-            
-            previous.pop()
+            board[i][j] = word[0]
             return False
 
 
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] == word[0]:
-                    if dfs(word,i,j,board,previous=[]):
+                    if dfs(word,i,j,board):
                         return True
         return False
 
 if __name__ == "__main__":
-    board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
-    word = "ABCCED"
+    board = [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
+    word = "ABCESEEEFS"
     s = Solution()
     print(s.exist(board,word))
