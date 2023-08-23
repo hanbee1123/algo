@@ -35,7 +35,7 @@ class Solution:
                 new_x = i+x
                 new_y = j+y
                 if 0<=new_x<len(board) and 0<=new_y<len(board[0]) and board[new_x][new_y] == word[1]:
-                    board[i][j] = '-'
+                    board[i][j] = ' '
                     if dfs(word[1:],new_x,new_y,board):
                         return True
             board[i][j] = word[0]
