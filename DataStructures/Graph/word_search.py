@@ -51,6 +51,6 @@ class Solution:
 
 if __name__ == "__main__":
     board = [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
-    word = "ABCESEEEFS"
+    word = "ABCESEEEF"
     s = Solution()
     print(s.exist(board,word))
