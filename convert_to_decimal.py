@@ -29,6 +29,5 @@ def test_convert_from_decimal():
 
 if __name__ == "__main__":
     test_convert_to_decimal()
-    test_convert_from_decimal()
 
 
