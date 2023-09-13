@@ -39,3 +39,4 @@ def solution(expressions):
 
 if __name__ == "__main__":
     print(solution('(abasdc)()()()'))
+    print('tester')
