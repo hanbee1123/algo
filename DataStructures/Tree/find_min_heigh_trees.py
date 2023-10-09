@@ -53,4 +53,4 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     s.findMinHeightTrees(6,[[3,0],[3,1],[3,2],[3,4],[5,4]])
-    #asd
+    #asdㅇ
